@@ -1,3 +1,9 @@
+if(is_initial==undefined){
+	is_initial=true;
+}
+Shoutbox.reload=function(){
+	Shoutbox.getShouts(shouts[shouts.length-1].id)
+}
 Shoutbox.getShouts=function(lm){
 	var head = document.head;
     var script = document.createElement("script");
@@ -9,4 +15,9 @@ Shoutbox.getShouts=function(lm){
 }
 Shoutbox.output_shouts=function(got_shouts){
 	amplify.store('shouts',shouts.concat(got_shouts));
+	shouts=amplify.store('shouts');
+	if(is_initial){
+		timer=setInterval('Shoutbox.reload()',3500);
+	}
+	is_initial=false;
 }
