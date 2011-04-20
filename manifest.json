@@ -1,0 +1,14 @@
+{
+  "name": "Blazebyte Shoutbox",
+  "version": "0.0.1",
+  "description": "Chat on Blazebyte.org quickly and easily with the blazebyte shoutbox extension.",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "popup": "popup.html"
+  },
+  "permissions": [
+    "tabs",
+    "http://blazebyte.org/"
+  ],
+  "background_page":"background.html"
+}
