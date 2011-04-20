@@ -24,7 +24,7 @@ function writeShout(shout_details){
           </footer>\
           <br class="clearfix" />\
         </li>';
-	if(shoutbox_box.children.length>15){
+	if(shoutbox_box.children.length>max_messages){
 		shoutbox_box.children[0].removeNode();
 	}
 }

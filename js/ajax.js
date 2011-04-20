@@ -20,7 +20,7 @@ Shoutbox.output_shouts=function(got_shouts){
 	shouts=amplify.store('shouts');
 	chrome.extension.sendRequest(got_shouts);
 	if(is_initial){
-		timer=setInterval('Shoutbox.reload()',3500);
+		timer=setInterval('Shoutbox.reload()',reloadTime);
 	}
 	is_initial=false;
 }
