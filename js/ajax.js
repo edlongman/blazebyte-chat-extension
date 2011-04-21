@@ -15,8 +15,8 @@ Shoutbox.getShouts=function(lm){
 	head.appendChild(script);
 }
 Shoutbox.output_shouts=function(got_shouts){
-	localStorage.setItem('shouts',JSON.stringify(shouts.concat(got_shouts)));
-	shouts=localStorage.getItem('shouts');
+	shouts=shouts.concat(got_shouts);
+	localStorage.setItem('shouts',JSON.stringify(shouts));
 	chrome.extension.sendRequest(got_shouts);
 }
 Shoutbox.reload();
