@@ -1,4 +1,5 @@
 shouts=[];
+localStorage.setItem('shouts','[]');
 Shoutbox.reload=function(){
 	var messid=(shouts.length==0)?0:shouts[shouts.length-1].id
 	Shoutbox.getShouts(messid);
