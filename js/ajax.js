@@ -3,7 +3,8 @@ localStorage.setItem('shouts','[]');
 Shoutbox.reload=function(){
 	var messid=(shouts.length==0)?0:shouts[shouts.length-1].id
 	Shoutbox.getShouts(messid);
-	timer=setTimeout('Shoutbox.reload()',reloadTime);
+	if(timer)clearTimeout(timer);
+	timer=setTimeout('Shoutbox.reload()',reloadTime*5);
 }
 Shoutbox.getShouts=function(lm){
 	var head = document.head;
@@ -20,5 +21,7 @@ Shoutbox.output_shouts=function(got_shouts){
 	stringified=JSON.stringify(shouts);
 	localStorage.setItem('shouts',stringified);
 	chrome.extension.sendRequest(got_shouts);
+	if(timer)clearTimeout(timer);
+	timer=setTimeout('Shoutbox.reload()',reloadTime);
 }
 Shoutbox.reload();
