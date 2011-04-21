@@ -7,7 +7,8 @@ Shoutbox.reload=function(){
 Shoutbox.getShouts=function(lm){
 	var head = document.head;
     var script = document.createElement("script");
-	var url="http://blazebyte.org/shoutbox/shoutbox.php?lu="+lm+'&_='+now();
+	var url="http://blazebyte.org/shoutbox/shoutbox.php?lu="+lm+'&_='+(new Date()).getTime();
+	script.src=url;
 	script.onload=function(){
 		head.removeChild(script);
 	}
