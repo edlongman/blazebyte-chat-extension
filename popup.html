@@ -11,10 +11,10 @@
 			<h2>Shoutbox</h2>
 		</header>
 		<ul id="shouts"></ul>
-		<div class="shout_form">
+		<form class="shout_form" action="javascript:;" onsubmit="post(this.firstElementChild.value);this.reset();">
 			<input type="text" />
 			<button>Shout</button>
-		</div>
+		</form>
 	</section>
 	<script type="text/javascript">
 		writeAll();

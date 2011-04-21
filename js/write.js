@@ -28,6 +28,7 @@ function writeShout(shout_details){
 		shoutbox_box.removeChild(shoutbox_box.children[0]);
 	}
 }
+chrome.extension.onRequest.addListener(write);
 function post(mess){
 	x=new XMLHttpRequest;
 	x.open("GET","http://blazebyte.org/shoutbox/shoutbox.php?msg="+encode.url(mess));
