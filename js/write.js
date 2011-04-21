@@ -6,7 +6,7 @@ function writeAll(){
 	}
 }
 function write(newShouts){
-	shouts=localStorage.getItem('shouts');
+	shouts=JSON.parse(localStorage.getItem('shouts'));
 	for(var i=newShouts.length-1;i>=0;i--){
 		writeShout(newShouts[i]);
 	}
