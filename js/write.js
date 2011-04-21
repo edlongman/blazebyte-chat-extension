@@ -25,6 +25,6 @@ function writeShout(shout_details){
           <br class="clearfix" />\
         </li>';
 	if(shoutbox_box.children.length>max_messages){
-		shoutbox_box.children[0].removeNode();
+		shoutbox_box.removeChild(shoutbox_box.children[0]);
 	}
 }
