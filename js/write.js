@@ -1,6 +1,5 @@
-shoutbox_box=document.getElementById('shouts');
 function writeAll(){
-	shouts=localStorage.getItem('shouts');
+	shouts=JSON.parse(localStorage.getItem('shouts'));
 	for(var i=shouts.length-1;i>=0;i--){
 		writeShout(shouts[i]);
 	}
@@ -12,6 +11,7 @@ function write(newShouts){
 	}
 }
 function writeShout(shout_details){
+	shoutbox_box=document.getElementById('shouts');
 	shoutbox_box.innerHTML+='\
         <li class="' + shout_details.group + '">\
           <header>\
