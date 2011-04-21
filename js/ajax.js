@@ -1,10 +1,8 @@
-if(is_initial==undefined){
-	is_initial=true;
-	shouts=[];
-}
+shouts=[];
 Shoutbox.reload=function(){
 	var messid=(shouts.length==0)?0:shouts[shouts.length-1].id
 	Shoutbox.getShouts(messid);
+	timer=setTimeout('Shoutbox.reload()',reloadTime);
 }
 Shoutbox.getShouts=function(lm){
 	var head = document.head;
@@ -16,11 +14,8 @@ Shoutbox.getShouts=function(lm){
 	head.appendChild(script);
 }
 Shoutbox.output_shouts=function(got_shouts){
-	amplify.store('shouts',shouts.concat(got_shouts));
-	shouts=amplify.store('shouts');
+	localStorage.setItem('shouts',shouts.concat(got_shouts));
+	shouts=localStorage.getItem('shouts');
 	chrome.extension.sendRequest(got_shouts);
-	if(is_initial){
-		timer=setInterval('Shoutbox.reload()',reloadTime);
-	}
-	is_initial=false;
 }
+Shoutbox.reload();

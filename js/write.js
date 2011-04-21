@@ -1,12 +1,12 @@
 shoutbox_box=document.getElementById('shouts');
 function writeAll(){
-	shouts=amplify.store('shouts');
+	shouts=localStorage.getItem('shouts');
 	for(var i=shouts.length-1;i>=0;i--){
 		writeShout(shouts[i]);
 	}
 }
 function write(newShouts){
-	shouts=amplify.store('shouts');
+	shouts=localStorage.getItem('shouts');
 	for(var i=newShouts.length-1;i>=0;i--){
 		writeShout(newShouts[i]);
 	}
