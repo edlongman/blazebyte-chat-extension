@@ -16,7 +16,7 @@ Shoutbox.getShouts=function(lm){
 	head.appendChild(script);
 }
 Shoutbox.output_shouts=function(got_shouts){
-	shouts=shouts.concat(got_shouts);
+	shouts=got_shouts.concat(shouts);
 	stringified=JSON.stringify(shouts);
 	localStorage.setItem('shouts',stringified);
 	chrome.extension.sendRequest(got_shouts);
