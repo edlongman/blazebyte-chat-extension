@@ -5,9 +5,13 @@ div.widget{
 	background: #fff;
 	border-bottom: 2px solid #054667;
 	margin: 0 0 15px;
+	width:200px;
+	height:390px;
 }
 div.widget > header{
-	background: #054667;	
+	background: #054667;
+	width:200px;
+	height:38px;	
 }
 h2{
 	color: #fff;
@@ -33,7 +37,7 @@ div.widget > section > span > a{
 	font-size: 12px;
 }
 div.widget > section > p > em{
-	font-variant: italic;
+	font-variant: small-caps;
 }
 div.widget > section > form{
 	margin: 10px 0 0;
@@ -47,6 +51,31 @@ div.widget > section > form > input{
 div.widget > section > form > button{
 	float: right;
 }
+button{
+	background-color: #ff5c00;
+	background-image: -moz-linear-gradient(top, #ff5c00, #ff9a00); /* FF3.6 */
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #ff5c00),color-stop(1, #ff9a00)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(#ff5c00, #ff9a00); /* Chrome 10+, Saf6 */
+	background-image: linear-gradient(top, #ff5c00, #ff9a00);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ff5c00', EndColorStr='#ff9a00'); /* IE6–IE9 */
+	box-shadow: inset 0 1px 0 #ffff00;
+	-webkit-box-shadow: inset 0 -1px 0 #ffff00;
+	-moz-box-shadow: inset 0 -1px 0 #ffff00;
+	color: #fff;
+	font-size: 10px;
+	font-weight: bold;
+	border: #ff5900 solid 1px;
+	border-bottom: #ff5900 solid 2px;
+	padding: 4px 10px 3px;
+	position: relative;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, .25);
+}
+
+button:hover{
+	border: #ff5900 solid 1px;
+	border-bottom: #ff5900 solid 1px;
+	margin: 1px 0 0;
+}
 div.widget > section > form > button:hover{
 	margin-top: 1px;
 }
@@ -55,6 +84,7 @@ div.widget > section > ul#shouts{
 	min-height: 300px;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	list-style:none;
 }
 div.widget > section > ul#shouts > li{
 	margin: 0 10px 5px 0;
