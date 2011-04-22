@@ -11,7 +11,8 @@ div.widget{
 div.widget > header{
 	background: #054667;
 	width:200px;
-	height:38px;	
+	height:38px;
+	padding:10px;	
 }
 h2{
 	color: #fff;
