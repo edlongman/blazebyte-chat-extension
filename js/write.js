@@ -12,6 +12,29 @@ function write(newShouts){
 }
 function writeShout(shout_details){
 	shoutbox_box=document.getElementById('shouts');
+	switch(item.group){
+		case 'Administrator':
+			item.group = 'admin';
+			break;
+		case 'Moderator':
+			item.group = 'mod';
+			break;
+		case 'Honorary Developer':
+			item.group = 'hdev';
+			break;
+		case 'Developer':
+			item.group = 'dev';
+			break;
+		case 'Editor':
+			item.group = 'editor';
+			break;
+		case '':
+			item.group = 'member';
+			break;
+		default:
+			item.group = 'member';
+			break;
+	}
 	shoutbox_box.innerHTML+='\
         <li class="' + shout_details.group + '">\
           <header>\
