@@ -21,16 +21,17 @@ Shoutbox.output_shouts=function(got_shouts){
 	while(shouts.length>15)shouts.pop();
 	stringified=JSON.stringify(shouts);
 	localStorage.setItem('shouts',stringified);
-	chrome.extension.sendRequest({'write',got_shouts});
+	chrome.extension.sendRequest(got_shouts);
 	if(localStorage.setItem('iconState')!='stop'){
 		flashIcon(true);
 		localStorage.setItem('iconState','alert');
 	}
 }
 Shoutbox.reload();
-canvas=document.getElementById('canvas')
+canvas=document.createElement('canvas');
 canvasContext = canvas.getContext('2d');
-img=document.getElementById('blazebyteicon')
+img=document.createElement('img');
+img.src="img/icon.png";
 flashIcon=function(isOrigIcon){
 	if (isOrigIcon){
 		img.src="iconred.png";
