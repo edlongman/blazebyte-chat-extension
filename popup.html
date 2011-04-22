@@ -4,18 +4,22 @@
 	<meta charset="UTF-8">
 	<script src="js/common.js"></script>
 	<script src="js/write.js"></script>
+	<link rel="stylesheet" href="css/popup.css" />
+	<link rel="stylesheet" href="css/reset.css" />
 </head>
 <body>
-	<section class="shoutbox">
+	<div class="widget">
 		<header>
 			<h2>Shoutbox</h2>
 		</header>
-		<ul id="shouts"></ul>
-		<form class="shout_form" action="javascript:;" onsubmit="post(this.firstElementChild.value);this.reset();">
-			<input type="text" />
-			<button>Shout</button>
-		</form>
-	</section>
+		<section>
+			<ul id="shouts"></ul>
+			<form class="shout_form" action="javascript:;" onsubmit="post(this.firstElementChild.value);this.reset();">
+				<input type="text" />
+				<button>Shout</button>
+			</form>
+		</section>
+	</div>
 	<script type="text/javascript">
 		writeAll();
 	</script>
