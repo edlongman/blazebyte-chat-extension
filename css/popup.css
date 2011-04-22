@@ -100,6 +100,13 @@ div.widget > section > ul#shouts > li > footer{
 	margin: 5px 0 0;
 	padding: 5px 0 -2px;
 }
+h6 {
+	font-size: 11px;
+	font-weight: bold;
+}
+.right {
+	float: right;
+}
 div.widget > section > ul#shouts > li > header > h6 > span {
 	font-size: 10px;
 	font-weight: bold;
