@@ -1,3 +1,4 @@
+var emptyBeforeWrite=false;
 function writeAll(){
 	shouts=JSON.parse(localStorage.getItem('shouts'));
 	for(var i=shouts.length-1;i>=0;i--){
@@ -5,6 +6,12 @@ function writeAll(){
 	}
 }
 function write(newShouts){
+	if(emptyBeforeWrite==true){
+		emptyBeforeWrite=false;
+		shoutbox_box.innerHTML='';
+		writeAll();
+		return;
+	}
 	shouts=JSON.parse(localStorage.getItem('shouts'));
 	for(var i=newShouts.length-1;i>=0;i--){
 		writeShout(newShouts[i]);
@@ -58,7 +65,7 @@ function post(mess){
 	x.open("GET","http://blazebyte.org/shoutbox/shoutbox.php?msg="+encode.url(mess));
 	x.onreadystatechange=function(){
 		if(x.readyState==4){
-			shoutbox_box.innerHTML='';
+			emptyBeforeWrite=true;
 			localStorage.setItem('shouts','[]')
 		}
 	}
