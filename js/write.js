@@ -12,27 +12,27 @@ function write(newShouts){
 }
 function writeShout(shout_details){
 	shoutbox_box=document.getElementById('shouts');
-	switch(item.group){
+	switch(shout_details.group){
 		case 'Administrator':
-			item.group = 'admin';
+			shout_details.group = 'admin';
 			break;
 		case 'Moderator':
-			item.group = 'mod';
+			shout_details.group = 'mod';
 			break;
 		case 'Honorary Developer':
-			item.group = 'hdev';
+			shout_details.group = 'hdev';
 			break;
 		case 'Developer':
-			item.group = 'dev';
+			shout_details.group = 'dev';
 			break;
 		case 'Editor':
-			item.group = 'editor';
+			shout_details.group = 'editor';
 			break;
 		case '':
-			item.group = 'member';
+			shout_details.group = 'member';
 			break;
 		default:
-			item.group = 'member';
+			shout_details.group = 'member';
 			break;
 	}
 	shoutbox_box.innerHTML+='\
