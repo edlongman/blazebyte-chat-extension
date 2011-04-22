@@ -29,15 +29,19 @@ Shoutbox.output_shouts=function(got_shouts){
 }
 Shoutbox.reload();
 canvas=document.createElement('canvas');
+canvas.width='18px';
+canvas.height='18px';
 canvasContext = canvas.getContext('2d');
 img=document.createElement('img');
-img.src="img/icon.png";
+iconsrc="img/logo.png"
+iconredsrc="img/logored.png"
+img.src=iconsrc;
 flashIcon=function(isOrigIcon){
 	if (isOrigIcon){
-		img.src="iconred.png";
+		img.src=iconredsrc;
 	}
 	else{
-		img.src="icon.png";
+		img.src=iconsrc;
 	}
 	if(localStorage.setItem('iconState')!='stop'){
 		StopFlash=false;
@@ -54,7 +58,7 @@ function ease(x) {
  
 function animateFlip(rotation,stop){
 	if(stop){
-		img.src="img/icon.png";
+		img.src=iconsrc;
 		drawIconAtRotation(0);
 		clearTimeout(spinTime);
 		return;
@@ -76,5 +80,5 @@ function drawIconAtRotation(rotation) {
 	canvasContext.rotate(2*Math.PI*ease(rotation));
 	canvasContext.drawImage(img,-Math.ceil(canvas.width/2),-Math.ceil(canvas.height/2));
 	canvasContext.restore();
-	chrome.browserAction.setIcon({imageData:canvasContext.getImageData(0, 0, 19, 19)});
+	chrome.browserAction.setIcon({imageData:canvasContext.getImageData(0, 0, 18, 18)});
 }
