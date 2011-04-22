@@ -50,6 +50,7 @@ function writeShout(shout_details){
 	if(shoutbox_box.children.length>max_messages){
 		shoutbox_box.removeChild(shoutbox_box.children[0]);
 	}
+	shoutbox_box.scrollTop=shoutbox_box.scrollHeight;
 }
 chrome.extension.onRequest.addListener(write);
 function post(mess){
