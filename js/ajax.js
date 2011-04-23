@@ -23,7 +23,7 @@ Shoutbox.output_shouts=function(got_shouts){
 	localStorage.setItem('shouts',stringified);
 	chrome.extension.sendRequest(got_shouts);
 	if(localStorage.setItem('iconState')!='stop'){
-		//flashIcon(true);
+		flashIcon(true);
 		//animateFlip(0,false);
 		localStorage.setItem('iconState','alert');
 	}
@@ -47,6 +47,7 @@ flashIcon=function(isOrigIcon){
 	if(localStorage.getItem('iconState')!='stop'){
 		StopFlash=false;
 		iconTime = setTimeout("flashIcon("+(!isOrigIcon)+")", 1000);
+		chrome.browserAction.setIcon({path:img.src});
 		localStorage.setItem('iconState','alert');
 	}
 	else{
