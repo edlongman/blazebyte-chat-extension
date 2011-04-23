@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Options</title>
+</head>
+<body>
+	Chime when someone shouts:<input type="checkbox" id="chime"/>
+	<button onclick="save()">Save</button>
+	<script type="text/javascript">
+		chime=document.getElementById('chime');
+		chime.checked=localStorage.getItem('chime');
+		function save(){
+			localStorage.setItem('chime',chime.checked)
+		}
+	</script>
+</body>
+</html>

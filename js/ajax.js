@@ -22,8 +22,11 @@ Shoutbox.output_shouts=function(got_shouts){
 	stringified=JSON.stringify(shouts);
 	localStorage.setItem('shouts',stringified);
 	chrome.extension.sendRequest(got_shouts);
-	if(localStorage.setItem('iconState')!='stop'){
+	if(localStorage.getItem('iconState')!='stop'){
 		flashIcon(true);
+		if(localStorage.getItem('chime')=='true'){
+			chime.play();
+		}
 		//animateFlip(0,false);
 		localStorage.setItem('iconState','alert');
 	}

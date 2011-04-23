@@ -16,5 +16,6 @@
     "tabs",
     "http://blazebyte.org/"
   ],
-  "background_page":"background.html"
+  "background_page":"background.html",
+  "options_page": "options.html"
 }
