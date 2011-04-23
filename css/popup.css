@@ -3,8 +3,6 @@ body{
 }
 div.widget{
 	background: #fff;
-	border-bottom: 2px solid #054667;
-	margin: 0 0 15px;
 	width:200px;
 	height:390px;
 }
