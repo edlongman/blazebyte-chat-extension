@@ -24,10 +24,7 @@ Shoutbox.output_shouts=function(got_shouts){
 	chrome.extension.sendRequest(got_shouts);
 	if(localStorage.getItem('iconState')!='stop'){
 		flashIcon(true);
-		if(localStorage.getItem('chime')=='true'){
-			chime.load();
-			chime.play();
-		}
+		tryChime();
 		//animateFlip(0,false);
 		localStorage.setItem('iconState','alert');
 	}
@@ -90,4 +87,9 @@ function drawIconAtRotation(rotation) {
 }
 chime=new Audio();
 chime.src="ting.mp3";
-
+function tryChime(){
+	if(localStorage.getItem('chime')=='true'){
+		chime.load();
+		chime.play();
+	}
+}
