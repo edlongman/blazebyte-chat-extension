@@ -25,6 +25,7 @@ Shoutbox.output_shouts=function(got_shouts){
 	if(localStorage.getItem('iconState')!='stop'){
 		flashIcon(true);
 		if(localStorage.getItem('chime')=='true'){
+			chime.load();
 			chime.play();
 		}
 		//animateFlip(0,false);
