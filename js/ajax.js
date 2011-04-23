@@ -67,11 +67,11 @@ function animateFlip(rotation,stop){
 	rotation += 1/200;
 	drawIconAtRotation(rotation);  
 	if(rotation <= 1){
-		spinTime=setTimeout("animateFlip("+rotation+")", 50);
+		spinTime=setTimeout("animateFlip("+rotation+")", 20);
 	}
 	else{
 		rotation = 0;
-		spinTime=setTimeout("animateFlip("+rotation+")", 50);
+		spinTime=setTimeout("animateFlip("+rotation+")", 20);
 	}
 }
 function drawIconAtRotation(rotation) {
