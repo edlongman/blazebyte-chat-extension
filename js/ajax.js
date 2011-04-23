@@ -30,8 +30,8 @@ Shoutbox.output_shouts=function(got_shouts){
 }
 Shoutbox.reload();
 canvas=document.createElement('canvas');
-canvas.width='18px';
-canvas.height='18px';
+canvas.width='18';
+canvas.height='18';
 canvasContext = canvas.getContext('2d');
 img=document.createElement('img');
 iconsrc="img/logo.png"
@@ -44,7 +44,7 @@ flashIcon=function(isOrigIcon){
 	else{
 		img.src=iconsrc;
 	}
-	if(localStorage.setItem('iconState')!='stop'){
+	if(localStorage.getItem('iconState')!='stop'){
 		StopFlash=false;
 		iconTime = setTimeout("flashIcon("+(!isOrigIcon)+")", 1000);
 		localStorage.setItem('iconState','alert');
