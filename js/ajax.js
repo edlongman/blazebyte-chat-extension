@@ -64,14 +64,14 @@ function animateFlip(rotation,stop){
 		clearTimeout(spinTime);
 		return;
 	}
-	rotation += 1/20;
+	rotation += 1/200;
 	drawIconAtRotation(rotation);  
 	if(rotation <= 1){
-		spinTime=setTimeout("animateFlip("+rotation+")", 500);
+		spinTime=setTimeout("animateFlip("+rotation+")", 50);
 	}
 	else{
 		rotation = 0;
-		spinTime=setTimeout("animateFlip("+rotation+")", 500);
+		spinTime=setTimeout("animateFlip("+rotation+")", 50);
 	}
 }
 function drawIconAtRotation(rotation) {
