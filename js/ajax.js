@@ -22,7 +22,7 @@ Shoutbox={
 		while(shouts.length>15)shouts.pop();
 		stringified=JSON.stringify(shouts);
 		localStorage.setItem('shouts',stringified);
-		chrome.extension.sendRequest(got_shouts);
+		opera.extension.broadcastMessage(JSON.stringify(got_shouts));
 		if(localStorage.getItem('iconState')!='stop'){
 			flashIcon(true);
 			tryChime();
@@ -50,11 +50,16 @@ flashIcon=function(isOrigIcon){
 	if(localStorage.getItem('iconState')!='stop'){
 		StopFlash=false;
 		iconTime = setTimeout("flashIcon("+(!isOrigIcon)+")", 1000);
-		chrome.browserAction.setIcon({path:img.src});
+		var ToolbarUIItemProperties = {  
+	        title: "Blazebyte Shoutbox",  
+	        icon: img.src,  
+	        popup: {href: "popup.html", width: 200, height: 390}  
+	    }  
+	    theButton = opera.contexts.toolbar.createItem(ToolbarUIItemProperties);
 		localStorage.setItem('iconState','alert');
 	}
 	else{
-		animateFlip(0,true);
+		//animateFlip(0,true);
 	}
 }
 function ease(x) {

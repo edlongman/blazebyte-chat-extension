@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>  
+  
+<widget xmlns="http://www.w3.org/ns/widgets">  
+    <name>Blazebyte Chat Extension</name>  
+    <description>Chat on Blazebyte.org quickly and easily with the blazebyte shoutbox extension.</description>  
+    <author href="http://blazebyte.org/community/index.php?action=profile;u=4011" email="">Ed Longman</author>  
+    <icon src="img/logo64.png"/>  
+</widget> 
