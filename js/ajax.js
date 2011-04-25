@@ -55,6 +55,7 @@ flashIcon=function(isOrigIcon){
 	if(localStorage.getItem('iconState')!='stop'){
 		StopFlash=false;
 		iconTime = setTimeout("flashIcon("+(!isOrigIcon)+")", 1000);
+		opera.postError(localStorage.setItem('iconState','alert'))
 		localStorage.setItem('iconState','alert');
 		if(opera){
 			toolbarButton.icon=img.src;
@@ -103,5 +104,12 @@ function tryChime(){
 	if(localStorage.getItem('chime')=='true'){
 		chime.load();
 		chime.play();
+	}
+}
+
+if(opera){
+	setInterval('(function(){localStorage.setItem("iconState","normal")})()',1000)
+	opera.extension.onmessage=function(){
+		localStorage.setItem('iconState','stop');
 	}
 }

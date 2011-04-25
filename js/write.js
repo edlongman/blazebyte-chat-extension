@@ -85,3 +85,12 @@ encode={
 		return encodeURIComponent( s ).replace( /\%20/g, '+' ).replace( /[!'()*~]/g, encode.character );
 	}
 }
+
+
+
+if(opera){
+	function sendState(){
+		popup.postMessage({'popup':'open'});
+		setTimeout('sendState()',100);
+	}
+}
