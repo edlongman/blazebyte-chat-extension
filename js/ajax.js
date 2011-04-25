@@ -106,11 +106,11 @@ function drawIconAtRotation(rotation) {
 chime=new Audio();
 chime.src="ting.mp3";
 if(opera){
-	chime.src="ting.ogg";
+	chime=new Audio("ting.ogg");
 }
 function tryChime(){
 	if(localStorage.getItem('chime')=='true'){
-		chime.load();
+		if(chrome)chime.load();
 		chime.play();
 	}
 }
