@@ -3,7 +3,7 @@ localStorage.setItem('shouts','[]');
 Shoutbox={
 	reload:function(){
 		shouts=JSON.parse(localStorage.getItem('shouts'))
-		var messid=(shouts.length==0)?0:shouts[0].id
+		var messid=(shouts.length==0)?0:shouts[0].id;
 		Shoutbox.getShouts(messid);
 		timer=setTimeout('Shoutbox.reload()',reloadTime);
 	},
@@ -13,7 +13,7 @@ Shoutbox={
 		var url="http://blazebyte.org/shoutbox/shoutbox.php?lu="+lm+'&_='+(new Date()).getTime();
 		script.src=url;
 		script.onload=function(){
-			head.removeChild(script);
+			head.removeChild(script);;
 		}
 		head.appendChild(script);
 	},
@@ -22,13 +22,18 @@ Shoutbox={
 		while(shouts.length>15)shouts.pop();
 		stringified=JSON.stringify(shouts);
 		localStorage.setItem('shouts',stringified);
-		chrome.extension.sendRequest(got_shouts);
+		if(opera){
+			opera.extension.broadcastMessage(JSON.stringify(got_shouts));
+		}
+		if(chrome){
+			chrome.extension.sendRequest(got_shouts);
+		}
 		if(localStorage.getItem('iconState')!='stop'){
 			flashIcon(true);
 			tryChime();
 			//animateFlip(0,false);
 			localStorage.setItem('iconState','alert');
-		}
+		};
 	}
 }
 Shoutbox.reload();
@@ -50,11 +55,22 @@ flashIcon=function(isOrigIcon){
 	if(localStorage.getItem('iconState')!='stop'){
 		StopFlash=false;
 		iconTime = setTimeout("flashIcon("+(!isOrigIcon)+")", 1000);
-		chrome.browserAction.setIcon({path:img.src});
 		localStorage.setItem('iconState','alert');
+		if(opera){
+			toolbarButton.icon=img.src;
+		}
+		if(chrome){
+			chrome.browserAction.setIcon({path:img.src});
+		}
 	}
 	else{
-		animateFlip(0,true);
+		if(opera){
+			toolbarButton.icon=iconsrc;
+		}
+		if(chrome){
+			chrome.browserAction.setIcon({path:iconsrc});
+		}
+		//animateFlip(0,true);
 	}
 }
 function ease(x) {
@@ -89,9 +105,24 @@ function drawIconAtRotation(rotation) {
 }
 chime=new Audio();
 chime.src="ting.mp3";
+if(opera){
+	chime=new Audio("ting.ogg");
+}
 function tryChime(){
 	if(localStorage.getItem('chime')=='true'){
-		chime.load();
+		if(chrome)chime.load();
 		chime.play();
+	}
+}
+
+
+if(opera){
+	opera.extension.onconnect = function(event)  {
+		localStorage.setItem('iconState','stop');
+		alert('stop');
+	}
+	opera.extension.ondisconnect = function(event)  {
+		localStorage.setItem('iconState','normal')
+		alert('normal');
 	}
 }

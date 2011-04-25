@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script>
+	if(opera){
+	    window.addEventListener("load", function() {  
+		    var ToolbarUIItemProperties = {  
+		            title: "Blazebyte Shoutbox",  
+		            icon: "img/logo.png",  
+		            popup: {href: "popup.html", width: 200, height: 390}  
+		    }  
+		    toolbarButton = opera.contexts.toolbar.createItem(ToolbarUIItemProperties);  
+		    opera.contexts.toolbar.addItem(toolbarButton);
+	    }, false);  
+	   }
+	</script>
+	<script src="js/common.js"></script>
+	<script src="js/ajax.js"></script>
+</head>
+<body>
+	
+</body>
+</html>

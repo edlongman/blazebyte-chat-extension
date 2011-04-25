@@ -59,7 +59,12 @@ function writeShout(shout_details){
 	}
 	shoutbox_box.scrollTop=shoutbox_box.scrollHeight;
 }
-chrome.extension.onRequest.addListener(write);
+if(opera){
+	opera.extension.onmessage=function(evt){write(JSON.parse(evt.data))};
+}
+if(chrome){
+	chrome.extension.onRequest.addListener(write);
+}
 function post(mess){
 	x=new XMLHttpRequest;
 	x.open("GET","http://blazebyte.org/shoutbox/shoutbox.php?msg="+encode.url(mess));
@@ -80,3 +85,6 @@ encode={
 		return encodeURIComponent( s ).replace( /\%20/g, '+' ).replace( /[!'()*~]/g, encode.character );
 	}
 }
+
+
+
