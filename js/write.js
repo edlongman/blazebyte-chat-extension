@@ -88,9 +88,3 @@ encode={
 
 
 
-if(opera){
-	function sendState(){
-		popup.postMessage({'popup':'open'});
-		setTimeout('sendState()',100);
-	}
-}

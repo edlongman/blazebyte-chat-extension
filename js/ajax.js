@@ -107,9 +107,14 @@ function tryChime(){
 	}
 }
 
+
 if(opera){
-	setInterval('(function(){localStorage.setItem("iconState","normal")})()',1000)
-	opera.extension.onmessage=function(){
+	opera.extension.onconnect = function(event)  {
 		localStorage.setItem('iconState','stop');
+		alert('stop');
+	}
+	opera.extension.ondisconnect = function(event)  {
+		localStorage.setItem('iconState','normal')
+		alert('normal');
 	}
 }
