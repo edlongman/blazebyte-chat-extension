@@ -3,7 +3,7 @@ localStorage.setItem('shouts','[]');
 Shoutbox={
 	reload:function(){
 		shouts=JSON.parse(localStorage.getItem('shouts'))
-		var messid=(shouts.length==0)?0:shouts[0].id
+		var messid=(shouts.length==0)?0:shouts[0].id;
 		Shoutbox.getShouts(messid);
 		timer=setTimeout('Shoutbox.reload()',reloadTime);
 	},
@@ -13,7 +13,7 @@ Shoutbox={
 		var url="http://blazebyte.org/shoutbox/shoutbox.php?lu="+lm+'&_='+(new Date()).getTime();
 		script.src=url;
 		script.onload=function(){
-			head.removeChild(script);
+			head.removeChild(script);;
 		}
 		head.appendChild(script);
 	},
@@ -22,13 +22,18 @@ Shoutbox={
 		while(shouts.length>15)shouts.pop();
 		stringified=JSON.stringify(shouts);
 		localStorage.setItem('shouts',stringified);
-		opera.extension.broadcastMessage(JSON.stringify(got_shouts));
+		if(opera){
+			opera.extension.broadcastMessage(JSON.stringify(got_shouts));
+		}
+		if(chrome){
+			chrome.extension.sendRequest(got_shouts);
+		}
 		if(localStorage.getItem('iconState')!='stop'){
 			flashIcon(true);
 			tryChime();
 			//animateFlip(0,false);
 			localStorage.setItem('iconState','alert');
-		}
+		};
 	}
 }
 Shoutbox.reload();
@@ -50,13 +55,13 @@ flashIcon=function(isOrigIcon){
 	if(localStorage.getItem('iconState')!='stop'){
 		StopFlash=false;
 		iconTime = setTimeout("flashIcon("+(!isOrigIcon)+")", 1000);
-		var ToolbarUIItemProperties = {  
-	        title: "Blazebyte Shoutbox",  
-	        icon: img.src,  
-	        popup: {href: "popup.html", width: 200, height: 390}  
-	    }  
-	    theButton = opera.contexts.toolbar.createItem(ToolbarUIItemProperties);
 		localStorage.setItem('iconState','alert');
+		if(opera){
+			toolbarButton.icon=img.src;
+		}
+		if(chrome){
+			chrome.browserAction.setIcon({path:img.src});
+		}
 	}
 	else{
 		//animateFlip(0,true);
