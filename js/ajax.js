@@ -55,7 +55,6 @@ flashIcon=function(isOrigIcon){
 	if(localStorage.getItem('iconState')!='stop'){
 		StopFlash=false;
 		iconTime = setTimeout("flashIcon("+(!isOrigIcon)+")", 1000);
-		opera.postError(localStorage.setItem('iconState','alert'))
 		localStorage.setItem('iconState','alert');
 		if(opera){
 			toolbarButton.icon=img.src;
@@ -65,6 +64,12 @@ flashIcon=function(isOrigIcon){
 		}
 	}
 	else{
+		if(opera){
+			toolbarButton.icon=iconsrc;
+		}
+		if(chrome){
+			chrome.browserAction.setIcon({path:iconsrc});
+		}
 		//animateFlip(0,true);
 	}
 }
@@ -100,6 +105,9 @@ function drawIconAtRotation(rotation) {
 }
 chime=new Audio();
 chime.src="ting.mp3";
+if(opera){
+	chime.src="ting.ogg";
+}
 function tryChime(){
 	if(localStorage.getItem('chime')=='true'){
 		chime.load();
