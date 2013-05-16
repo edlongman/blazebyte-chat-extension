@@ -22,7 +22,7 @@ function init(){
 	localStorage.setItem('loggedin',true);
     // Load latest post date
     $.get('http://blazebyte.org/shoutbox/load-date.php',function(data){lastShoutDate=data;
-localStorage.setItem('lastdate',lastShoutDate);});
+		localStorage.setItem('lastdate',lastShoutDate);});
     // Load latest shouts
     $.get('http://blazebyte.org/shoutbox/load-shouts.php', function(data) {
     	shoutboxHTML=data;
@@ -55,7 +55,8 @@ function pullShouts() {
 				localStorage.setItem('iconState','alert');
 			}
             // Update latest post date
-    		$.get('http://blazebyte.org/shoutbox/load-date.php',function(result){lastShoutDate=data});
+		    $.get('http://blazebyte.org/shoutbox/load-date.php',function(data){lastShoutDate=data;
+				localStorage.setItem('lastdate',lastShoutDate);});
         }
     });
 }

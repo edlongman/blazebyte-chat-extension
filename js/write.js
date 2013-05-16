@@ -27,7 +27,7 @@ function init(){
 	setInterval(refreshshouts,500);
 }
 function refreshshouts(){
-	$("last-shout-date").html(localStorage.getItem('lastdate'));
+	$(".last-shout-date").html(localStorage.getItem('lastdate'));
 	var scrollDiff=$(".shoutbox-content")[0].scrollHeight-$('.shoutbox-content').scrollTop();
 	$(".shoutbox-content").html(localStorage.getItem('shouts'));
 	

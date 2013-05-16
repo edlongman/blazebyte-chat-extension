@@ -1,6 +1,6 @@
 {
   "name": "Blazebyte Shoutbox",
-  "version": "3.6.0.0",
+  "version": "5.0.0.2",
   "manifest_version": 2,
   "description": "Chat on Blazebyte.org quickly and easily with the blazebyte shoutbox extension.",
   "browser_action": {
