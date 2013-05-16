@@ -3,16 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Options</title>
+	<script src="js/jquery.js"></script>
+	<script src="js/options.js"></script>
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/popup.css" />
+	<link rel="stylesheet" href="css/options.css" />
 </head>
 <body>
-	Chime when someone shouts:<input type="checkbox" id="chime" checked="true"/>
-	<button onclick="save()">Save</button>
-	<script type="text/javascript">
-		chime=document.getElementById('chime');
-		chime.checked=localStorage.getItem('chime');
-		function save(){
-			localStorage.setItem('chime',chime.checked)
-		}
-	</script>
+	Chime when someone shouts:<input type="checkbox" id="chime" checked/>
 </body>
 </html>
