@@ -1,123 +1,136 @@
-body{
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-div.widget{
-	background: #fff;
-	width:200px;
-	height:390px;
-}
-div.widget > header{
-	background: #054667;
-	width:180px;
-	padding:10px;	
-}
-h2{
-	color: #fff;
-	font-size: 18px;
-	font-weight: bold;
-	text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
-}
-div.widget > section {
-	padding: 10px;
-	position: relative;
-}
-div.widget > section > h6{
-	color: #4c4c4c;
-	font-size: 16px;
-	font-weight: bold;
-	margin: 0 0 10px;
-	text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
-}
-div.widget > section > p, 
-div.widget > section > span > a{
-	color: #777777;
-	font-weight: bold;
-	font-size: 12px;
-}
-div.widget > section > p > em{
-	font-variant: small-caps;
-}
-div.widget > section > form{
-	margin: 10px 0 0;
-}
-div.widget > section > form > input{
-	font-size: 10px;
-	float: left;
-	line-height: 16px;
-	width: 113px;
-}
-div.widget > section > form > button{
-	float: right;
-}
-button{
-	background-color: #ff5c00;
-	background-image: -webkit-linear-gradient(#ff5c00, #ff9a00); /* Chrome 10+, Saf6 */
-	box-shadow: inset 0 1px 0 #ffff00;
-	-webkit-box-shadow: inset 0 -1px 0 #ffff00;
-	-moz-box-shadow: inset 0 -1px 0 #ffff00;
-	color: #fff;
-	font-size: 10px;
-	font-weight: bold;
-	border: #ff5900 solid 1px;
-	border-bottom: #ff5900 solid 2px;
-	padding: 4px 10px 3px;
-	position: relative;
-	text-shadow: 0 1px 2px rgba(0, 0, 0, .25);
+/* Webfonts */
+url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400italic,700italic,600italic,600,200italic,400,700,900,200,300italic,300,900italic);
+@font-face {
+  font-family: 'FontAwesome';
+    url('fontawesome-webfont.woff') format('woff'),
+  font-weight: normal;
+  font-style: normal;
 }
 
-button:hover{
-	border: #ff5900 solid 1px;
-	border-bottom: #ff5900 solid 1px;
-	margin: 1px 0 0;
+[class^="icon-"],
+[class*=" icon-"] {
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: inherit;
+    -webkit-font-smoothing: antialiased;
+    display: inline;
+    width: auto;
+    height: auto;
+    line-height: normal;
+    vertical-align: baseline;
+    background-image: none;
+    background-position: 0 0;
+    background-repeat: repeat;
+    margin-top: 0;
 }
-div.widget > section > form > button:hover{
-	margin-top: 1px;
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+    text-decoration: inherit;
+    display: inline-block;
+    speak: none;
 }
-div.widget > section > ul#shouts{
-	max-height: 300px;
-	min-height: 300px;
-	overflow-x: hidden;
-	overflow-y: scroll;
-	list-style:none;
+.icon-spin {
+    display: inline-block;
+    -webkit-animation: spin 20s infinite linear;
 }
-div.widget > section > ul#shouts > li{
-	margin: 0 10px 5px 0;
+@-webkit-keyframes spin { 
+    5% { -webkit-transform: rotate(0deg) }
+    10% { -webkit-transform: rotate(359deg) }
+    10.0001% { -webkit-transform: rotate(0deg) }
 }
-div.widget > section > ul#shouts > li > p{
-	font-size: 11px;
-	margin: -10px 0 0;
+.icon-bullhorn:before { content: "\f0a1" }
+
+/* General */
+* {
+	font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
 }
-div.widget > section > ul#shouts > li > footer{
-	color: #919191;
-	display: block;
-	font-size: 8px;
-	margin: 5px 0 0;
+
+body {
+	font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif !important;
+	color: #3a4556;
+	background: #ebeef3;
+	font-size: 14px;
 }
-h6 {
-	font-size: 11px;
-	font-weight: bold;
+
+/* Widget: Shoutbox */
+.phpbb-widget-shoutbox{
+	background: #ebeef3;
+	font-size: 16px;
+	padding: 15px;
+	width:220px;
 }
-.right {
+
+.phpbb-widget-shoutbox h2 {
+	float: left;
+	font-size: 22px;
+	font-weight: 300;
+}
+
+.phpbb-widget-shoutbox .sound-toggle {
 	float: right;
+	color: #1a4795;
+	cursor: pointer;
 }
-div.widget > section > ul#shouts > li > header > h6 > span {
-	font-size: 10px;
+
+.phpbb-widget-shoutbox .load-shouts {
+	margin: 15px 0;
+	overflow: scroll;
+	height: 250px;
+	overflow-x: hidden;
+}
+
+.phpbb-widget-shoutbox .last-shout-date {
+	font-size: 14px;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+	color: #75797f;
+	border-bottom: 1px solid #d0d7e3;
+}
+
+.phpbb-widget-shoutbox #shout-msg {
+	background-color: #e9e9ea;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#e9e9ea), to(#fcfcfd));
+	border-radius: 4px;
+	padding: 12px;
+	font-size: 16px;
+	width: 194px;
+	border: 1px solid #979799;
+	box-shadow: inset 0 1px 3px #c9c9ca;
+	outline: none;
+	color: #343b46;
+	-webkit-appearance: none;
+}
+
+.phpbb-widget-shoutbox #shout-msg:focus {
+	box-shadow: 0 0 3px #3160a5;
+}
+
+.phpbb-widget-shoutbox .shout {
+	background: #ffffff;
+	color: #586272;
+	margin-bottom: 10px;
+	padding: 10px;
+	line-height: 22px;
+	word-break:hyphenate;
+	word-wrap:break-word;
+}
+
+.phpbb-widget-shoutbox .shout:last-of-type {
+	margin-bottom: 0;
+}
+
+.phpbb-widget-shoutbox .author {
+	color: #303030;
 	font-weight: bold;
 }
-div.widget > section > ul#shouts > li.admin > header > h6{
-	color: #e31414;
-}
-div.widget > section > ul#shouts > li.mod > header > h6{
-	color: #00496d;
-}
-div.widget > section > ul#shouts > li.hdev > header > h6{
-	color: #ffb922;
-}
-div.widget > section > ul#shouts > li.dev > header > h6{
-	color: #53b20e;
-}
-div.widget > section > ul#shouts > li.member > header > h6{
-	color: #5f5f5f;
+
+.shout-overlay {
+	background-image: url(/img/shout-overlay.png);
+	height: 20px;
+	position: absolute;
+	width: 220px;
+	margin-top: 15px;
 }
 div.widget > section > ul#shouts::-webkit-scrollbar{
 	height: 6px;
@@ -136,3 +149,23 @@ div.widget > section > ul#shouts::-webkit-scrollbar-thumb:vertical:active{
 	background-color: #7a7979;
 	-webkit-border-radius: 6px;
 }
+.clearfix { clear: both; }
+
+.page-wrap { width: 960px; margin: 0 auto; } /* Responsify plz */
+
+::selection {
+	background: #f84931; /* Safari */
+	color: #ffffff;
+}
+
+a {
+	color: #f84931;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #f84931;
+}
+
+strong { font-weight: 700; }

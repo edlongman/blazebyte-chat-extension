@@ -1,85 +1,42 @@
-var emptyBeforeWrite=false;
-function writeAll(){
-	shouts=JSON.parse(localStorage.getItem('shouts'));
-	for(var i=shouts.length-1;i>=0;i--){
-		writeShout(shouts[i]);
+$(document).ready(function(){
+	localStorage.setItem('iconState','stop');
+	logincheck();
+});
+function logincheck(){
+	if(localStorage.getItem('loggedin')=="true"){
+		init();
+	}
+	else{
+		$(".shoutbox-content").html("You must be logged in to ues the shoutbox.<br/><a href='http://blazebyte.org/community/ucp.php?mode=login' target='blank'>Click here</a> to sign in or register")
+		$("#shout-msg").hide();
 	}
 }
-function write(newShouts){
-	if(emptyBeforeWrite==true){
-		emptyBeforeWrite=false;
-		shoutbox_box.innerHTML='';
-		writeAll();
-		return;
-	}
-	shouts=JSON.parse(localStorage.getItem('shouts'));
-	for(var i=newShouts.length-1;i>=0;i--){
-		writeShout(newShouts[i]);
-	}
-}
-function writeShout(shout_details){
-	shoutbox_box=document.getElementById('shouts');
-	switch(shout_details.group){
-		case 'Administrator':
-			shout_details.group = 'admin';
-			break;
-		case 'Moderator':
-			shout_details.group = 'mod';
-			break;
-		case 'Honorary Developer':
-			shout_details.group = 'hdev';
-			break;
-		case 'Developer':
-			shout_details.group = 'dev';
-			break;
-		case 'Editor':
-			shout_details.group = 'editor';
-			break;
-		case '':
-			shout_details.group = 'member';
-			break;
-		default:
-			shout_details.group = 'member';
-			break;
-	}
-	shoutbox_box.innerHTML+='\
-        <li class="' + shout_details.group + '">\
-          <header>\
-            <h6>' + shout_details.member + ' <span class="right">(' + shout_details.group + ')</span></h6>\
-            <br class="clearfix" />\
-          </header>\
-          <p>' + shout_details.message + '</p>\
-          <footer>\
-            <em class="right">' + shout_details.date + '</em>\
-          </footer>\
-          <br class="clearfix" />\
-        </li>';
-	if(shoutbox_box.children.length>max_messages){
-		shoutbox_box.removeChild(shoutbox_box.children[0]);
-	}
-	shoutbox_box.scrollTop=shoutbox_box.scrollHeight;
-}
-chrome.extension.onRequest.addListener(write);
-function post(mess){
-	x=new XMLHttpRequest;
-	x.open("GET","http://blazebyte.org/shoutbox/shoutbox.php?msg="+encode.url(mess));
-	x.onreadystatechange=function(){
-		if(x.readyState==4){
-			emptyBeforeWrite=true;
-			localStorage.setItem('shouts','[]')
+function init(){
+	$('#shout-msg').keyup(function(e) {
+		//alert(e.keyCode);
+		if(e.keyCode == 13) {
+			var shoutMessage = $("#shout-msg").val();
+	        if (shoutMessage) {
+	            $.post("http://blazebyte.org/shoutbox/shout.php", { message: shoutMessage });
+	            $("#shout-msg").val("");
+	        }
 		}
-	}
-	x.send(null);
+	});
+	refreshshouts();
+	$(".shoutbox-content").scrollTop($(".shoutbox-content")[0].scrollHeight);
+	setInterval(refreshshouts,500);
 }
-encode={
-	character: function(c) {
-		return '%' + c.charCodeAt(0).toString(16);
-	},
-
-	url: function(s) {
-		return encodeURIComponent( s ).replace( /\%20/g, '+' ).replace( /[!'()*~]/g, encode.character );
+function refreshshouts(){
+	$("last-shout-date").html(localStorage.getItem('lastdate'));
+	var scrollDiff=$(".shoutbox-content")[0].scrollHeight-$('.shoutbox-content').scrollTop();
+	$(".shoutbox-content").html(localStorage.getItem('shouts'));
+	
+	if(scrollDiff<=250){
+		$(".shoutbox-content").scrollTop($(".shoutbox-content")[0].scrollHeight);
 	}
 }
-
+$(window).on('unload', function(){
+	localStorage.setItem('iconState','normal');
+});
 
 

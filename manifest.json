@@ -1,10 +1,11 @@
 {
   "name": "Blazebyte Shoutbox",
   "version": "3.6.0.0",
+  "manifest_version": 2,
   "description": "Chat on Blazebyte.org quickly and easily with the blazebyte shoutbox extension.",
   "browser_action": {
     "default_icon": "img/logo.png",
-    "popup": "popup.html"
+    "default_popup": "popup.html"
   },
   "icons": {
     "128": "img/logo128.png",
@@ -13,9 +14,12 @@
     "48": "img/logo48.png"
    },
   "permissions": [
-    "tabs",
     "http://blazebyte.org/"
   ],
-  "background_page":"background.html",
-  "options_page": "options.html"
+  "background": {
+  	"persistant":true,
+  	"page": "background.html"
+  },
+  "options_page": "options.html",
+  "homepage_url": "http://blazebyte.org/community/"
 }
