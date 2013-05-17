@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Ed Longman</string>
+	<key>Builder Version</key>
+	<string>7536.29.13</string>
+	<key>CFBundleDisplayName</key>
+	<string>blazebyte-chat-extension-safari</string>
+	<key>CFBundleIdentifier</key>
+	<string>org.blazebyte</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Global Page</key>
+		<string>background.html</string>
+		<key>Popovers</key>
+		<array>
+			<dict>
+				<key>Filename</key>
+				<string>popup.html</string>
+				<key>Height</key>
+				<real>445</real>
+				<key>Identifier</key>
+				<string>Shoutbox</string>
+				<key>Width</key>
+				<real>250</real>
+			</dict>
+		</array>
+		<key>Toolbar Items</key>
+		<array>
+			<dict>
+				<key>Identifier</key>
+				<string>boxopener</string>
+				<key>Image</key>
+				<string>img/logo-grey.png</string>
+				<key>Label</key>
+				<string>Shoutbox</string>
+				<key>Popover</key>
+				<string>Shoutbox</string>
+				<key>Tool Tip</key>
+				<string>Open shoutbox</string>
+			</dict>
+		</array>
+	</dict>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict/>
+	</dict>
+	<key>Description</key>
+	<string>This extension allows Blazebyte members to chat easily from the browser</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Allowed Domains</key>
+			<array>
+				<string>*.blazebyte.org</string>
+			</array>
+			<key>Level</key>
+			<string>Some</string>
+		</dict>
+	</dict>
+	<key>Website</key>
+	<string>http://blazebyte.org/community/</string>
+</dict>
+</plist>

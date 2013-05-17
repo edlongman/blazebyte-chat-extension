@@ -3,11 +3,12 @@ localStorage.setItem('shouts','');
 localStorage.setItem('loggedin',false);
 localStorage.setItem('iconState','normal')
 $(document).ready(function(){
+	$.ajaxSetup({ cache: false });
 	//test to see if they are logged in
 	logincheck();
 });
 function logincheck(){
-	$.get("http://blazebyte.org/community/ucp.php?mode=login",function (data) {
+	$.get("http://blazebyte.org/community/ucp.php?mode=login&"+(new Date).getTime(),function (data) {
 		//must have been one of two above
 		cachedata=data;
 		if(data.indexOf("<h2>Login</h2>")==-1){
@@ -21,14 +22,14 @@ function logincheck(){
 function init(){
 	localStorage.setItem('loggedin',true);
     // Load latest post date
-    $.get('http://blazebyte.org/shoutbox/load-date.php',function(data){lastShoutDate=data;
+    $.get('http://blazebyte.org/shoutbox/load-date.php?'+(new Date).getTime(),function(data){lastShoutDate=data;
 		localStorage.setItem('lastdate',lastShoutDate);});
     // Load latest shouts
-    $.get('http://blazebyte.org/shoutbox/load-shouts.php', function(data) {
+    $.get('http://blazebyte.org/shoutbox/load-shouts.php?'+(new Date).getTime(), function(data) {
     	shoutboxHTML=data;
 		localStorage.setItem('shouts',shoutboxHTML);
     });
-    $.post('http://blazebyte.org/shoutbox/init.php', function(data) {
+    $.post('http://blazebyte.org/shoutbox/init.php?'+(new Date).getTime(), function(data) {
         shoutNumInit = data;
     });
 	setInterval(pullShouts, 1000);
@@ -36,20 +37,20 @@ function init(){
 // Check if there is a new number of posts
 shoutNumInit = 0;
 function pullShouts() {
-    $.post('http://blazebyte.org/shoutbox/pull-shouts.php', function(data) {
+    $.post('http://blazebyte.org/shoutbox/pull-shouts.php?'+(new Date).getTime(), function(data) {
         shoutNumPull = data;
         shoutNumInitSend = shoutNumInit;
         if (shoutNumPull > shoutNumInit) {
             shoutNumInit = shoutNumPull;
             // Add the shouts from shoutNumInit to shoutNumPull
-            $.post('http://blazebyte.org/shoutbox/get-shouts.php', { sInit: shoutNumInitSend, sPull: shoutNumPull }, function(data) {
+            $.post('http://blazebyte.org/shoutbox/get-shouts.php?'+(new Date).getTime(), { sInit: shoutNumInitSend, sPull: shoutNumPull }, function(data) {
                 // Add these shouts
                 shoutboxHTML+=data;
 				localStorage.setItem('shouts',shoutboxHTML);
             });
-    		$.get('http://blazebyte.org/shoutbox/load-date.php',function(data){lastShoutDate=data});
 			if(localStorage.getItem('iconState')=='normal'){
-				flashIcon(true);
+				try{chrome;flashIcon(true);}
+				catch(e){};
 				tryChime();
 				//animateFlip(0,false);
 				localStorage.setItem('iconState','alert');
@@ -98,7 +99,7 @@ chime=new Audio();
 chime.src="ting.mp3";
 function tryChime(){
 	if(localStorage.getItem('chime')!='false'){
-		if(chrome)chime.load();
+		chime.load();
 		chime.play();
 	}
 }
