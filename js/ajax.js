@@ -97,7 +97,7 @@ function flashIcon(){
 chime=new Audio();
 chime.src="ting.mp3";
 function tryChime(){
-	if(localStorage.getItem('chime')=='true'){
+	if(localStorage.getItem('chime')!='false'){
 		if(chrome)chime.load();
 		chime.play();
 	}
